@@ -17,7 +17,9 @@ type Message struct {
 
 func handler(w http.ResponseWriter, r *http.Request) {
 
-	message := Message{"Hello World", 200}
+	json_message := os.Getenv("JSON_MESSAGE")
+
+	message := Message{json_message, 200}
 
 	js, err := json.Marshal(message)
 	if err != nil {
